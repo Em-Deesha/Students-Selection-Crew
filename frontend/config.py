@@ -29,6 +29,37 @@ def get_config_value(key, default=None):
     
     return value
 
+def get_google_credentials():
+    """Get Google Service Account credentials from Streamlit secrets or file"""
+    if STREAMLIT_AVAILABLE and hasattr(st, 'secrets'):
+        try:
+            # Try to get credentials from Streamlit secrets
+            if 'google_service_account' in st.secrets:
+                import json
+                import tempfile
+                
+                # Create credentials dict from secrets
+                creds_dict = dict(st.secrets['google_service_account'])
+                
+                # Write to temporary file for compatibility
+                with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+                    json.dump(creds_dict, f)
+                    temp_file_path = f.name
+                
+                print(f"✅ Using Google Service Account from Streamlit secrets")
+                return temp_file_path
+        except Exception as e:
+            print(f"⚠️ Error loading credentials from secrets: {e}")
+    
+    # Fallback to local file
+    local_file = get_config_value('GOOGLE_CREDENTIALS_FILE', 'studentcrew-473406-c69f4c709523.json')
+    if os.path.exists(local_file):
+        print(f"✅ Using local credentials file: {local_file}")
+        return local_file
+    
+    print(f"❌ No Google credentials found")
+    return None
+
 class Config:
     # API Keys
     OPENAI_API_KEY = get_config_value('OPENAI_API_KEY')
@@ -37,7 +68,7 @@ class Config:
     ASSEMBLYAI_API_KEY = get_config_value('ASSEMBLYAI_API_KEY')
     
     # Google Services
-    GOOGLE_CREDENTIALS_FILE = get_config_value('GOOGLE_CREDENTIALS_FILE', 'studentcrew-473406-c69f4c709523.json')
+    GOOGLE_CREDENTIALS_FILE = get_google_credentials()
     GOOGLE_SHEET_ID = get_config_value('GOOGLE_SHEET_ID', '1JIh4vBLKoXoSKPFA4wHvC52HTlsqHQurvXqNCaiPsG4')
     GOOGLE_DRIVE_FOLDER_ID = get_config_value('GOOGLE_DRIVE_FOLDER_ID')
     
