@@ -1,0 +1,93 @@
+# Student Selection Crew Configuration
+# Copy this file to frontend/.env and fill in your actual API keys and credentials
+
+# =============================================================================
+# API KEYS - Required for AI Features
+# =============================================================================
+
+# OpenAI API Key (Required for video transcription and analysis)
+# Get from: https://platform.openai.com/api-keys
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Google API Key (Required for Google services)
+# Get from: https://console.cloud.google.com/apis/credentials
+GOOGLE_API_KEY=your_google_api_key_here
+
+# Gemini API Key (Optional - for enhanced AI features)
+# Get from: https://makersuite.google.com/app/apikey
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# AssemblyAI API Key (Optional - alternative for speech-to-text)
+# Get from: https://www.assemblyai.com/
+ASSEMBLYAI_API_KEY=your_assemblyai_api_key_here
+
+# =============================================================================
+# GOOGLE SERVICES - Required for Data Storage
+# =============================================================================
+
+# Google Service Account Credentials File
+# Download from Google Cloud Console and place in frontend/ directory
+GOOGLE_CREDENTIALS_FILE=studentcrew-473406-c69f4c709523.json
+
+# Google Sheets ID (Required - where all data is stored)
+# Get from your Google Sheets URL: https://docs.google.com/spreadsheets/d/SHEET_ID_HERE/edit
+GOOGLE_SHEET_ID=your_google_sheet_id_here
+
+# =============================================================================
+# EMAIL CONFIGURATION - Required for Notifications
+# =============================================================================
+
+# Gmail Username (Required for sending notifications)
+GMAIL_USERNAME=your_email@gmail.com
+
+# Gmail App Password (Required - NOT your regular password)
+# Enable 2FA on Gmail, then generate app password at: https://myaccount.google.com/apppasswords
+GMAIL_APP_PASSWORD=your_16_character_app_password_here
+
+# =============================================================================
+# PROJECT SETTINGS - Optional Customization
+# =============================================================================
+
+# Project Name (displayed in the interface)
+PROJECT_NAME=Student Selection Crew
+
+# Maximum number of students to shortlist
+MAX_SHORTLIST=10
+
+# Maximum number of students for final selection
+MAX_FINAL_SELECTION=5
+
+# =============================================================================
+# SETUP INSTRUCTIONS
+# =============================================================================
+
+# 1. GOOGLE SHEETS SETUP:
+#    - Create a new Google Sheet
+#    - Copy the sheet ID from the URL
+#    - Set up Google Sheets API in Google Cloud Console
+#    - Create service account and download credentials JSON
+#    - Share your sheet with the service account email
+
+# 2. GMAIL SETUP:
+#    - Enable 2-factor authentication on your Gmail account
+#    - Generate an app-specific password
+#    - Use the app password (not your regular password)
+
+# 3. OPENAI SETUP:
+#    - Create account at https://platform.openai.com/
+#    - Add payment method (required for API usage)
+#    - Generate API key from dashboard
+
+# 4. OPTIONAL APIs:
+#    - Gemini: For enhanced AI analysis
+#    - AssemblyAI: Alternative speech-to-text service
+
+# =============================================================================
+# SECURITY NOTES
+# =============================================================================
+
+# - NEVER commit the .env file to version control
+# - Keep your API keys secure and private
+# - Regularly rotate your API keys
+# - Monitor your API usage and costs
+# - Use environment-specific configurations for production

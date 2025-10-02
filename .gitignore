@@ -1,0 +1,102 @@
+# Environment Variables (NEVER commit these!)
+.env
+frontend/.env
+*.env
+
+# Google Service Account Credentials (NEVER commit these!)
+*.json
+!package.json
+!package-lock.json
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+.env/
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+streamlit.log
+
+# Temporary Files
+temp/
+tmp/
+*.tmp
+*.temp
+
+# Data Files (may contain sensitive information)
+data/
+outputs/
+*.csv
+*.xlsx
+*.xls
+
+# Backup Files
+*.bak
+*.backup
+*~
+
+# Test Files (may contain sensitive data)
+test_data/
+test_results/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Local Configuration
+local_config.py
+config_local.py
+
+# API Keys and Secrets
+secrets.txt
+api_keys.txt
+credentials.txt
