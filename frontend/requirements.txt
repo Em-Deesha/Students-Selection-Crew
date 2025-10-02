@@ -14,21 +14,23 @@ langchain-openai>=0.0.5
 # CrewAI Main Package
 crewai>=0.28.0
 
+# OpenAI Integration (including Whisper)
+openai>=1.12.0
+openai-whisper>=20231117
+
 # Google Services Integration
 google-api-python-client>=2.100.0
 google-auth>=2.23.0
 google-auth-oauthlib>=1.1.0
 google-auth-httplib2>=0.1.1
 gspread>=5.10.0
-
-# OpenAI Integration
-openai>=1.12.0
+google-generativeai>=0.3.0
 
 # Additional AI Services
 anthropic>=0.18.0
 
-# Email and Communication
-secure-smtplib>=0.1.1
+# Audio/Video Processing
+ffmpeg-python>=0.2.0
 
 # Data Processing and Analysis
 numpy>=1.24.0
@@ -54,6 +56,9 @@ typing-extensions>=4.7.0
 instructor>=0.4.0
 litellm>=1.0.0
 
+# Audio Processing Dependencies
+torch>=2.0.0
+torchaudio>=2.0.0
+
 # Optional: Enhanced AI Features
-# google-generativeai>=0.3.0  # Uncomment if using Gemini
 # assemblyai>=0.17.0          # Uncomment if using AssemblyAI
