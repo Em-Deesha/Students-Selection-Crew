@@ -1,31 +1,54 @@
 """
 Configuration settings for the Student Selection Crew
+Supports both local .env files and Streamlit Cloud secrets
 """
 import os
 from dotenv import load_dotenv
 
+# Load .env file for local development
 load_dotenv()
+
+# Try to import streamlit for cloud deployment
+try:
+    import streamlit as st
+    STREAMLIT_AVAILABLE = True
+except ImportError:
+    STREAMLIT_AVAILABLE = False
+
+def get_config_value(key, default=None):
+    """Get configuration value from environment or Streamlit secrets"""
+    # First try environment variables (local development)
+    value = os.getenv(key, default)
+    
+    # If running on Streamlit Cloud, try secrets
+    if STREAMLIT_AVAILABLE and hasattr(st, 'secrets') and value == default:
+        try:
+            value = st.secrets.get(key, default)
+        except:
+            pass
+    
+    return value
 
 class Config:
     # API Keys
-    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-    GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
-    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
-    ASSEMBLYAI_API_KEY = os.getenv('ASSEMBLYAI_API_KEY')
+    OPENAI_API_KEY = get_config_value('OPENAI_API_KEY')
+    GOOGLE_API_KEY = get_config_value('GOOGLE_API_KEY')
+    GEMINI_API_KEY = get_config_value('GEMINI_API_KEY')
+    ASSEMBLYAI_API_KEY = get_config_value('ASSEMBLYAI_API_KEY')
     
     # Google Services
-    GOOGLE_CREDENTIALS_FILE = os.getenv('GOOGLE_CREDENTIALS_FILE', 'studentcrew-473406-c69f4c709523.json')
-    GOOGLE_SHEET_ID = os.getenv('GOOGLE_SHEET_ID', '1JIh4vBLKoXoSKPFA4wHvC52HTlsqHQurvXqNCaiPsG4')
-    GOOGLE_DRIVE_FOLDER_ID = os.getenv('GOOGLE_DRIVE_FOLDER_ID')
+    GOOGLE_CREDENTIALS_FILE = get_config_value('GOOGLE_CREDENTIALS_FILE', 'studentcrew-473406-c69f4c709523.json')
+    GOOGLE_SHEET_ID = get_config_value('GOOGLE_SHEET_ID', '1JIh4vBLKoXoSKPFA4wHvC52HTlsqHQurvXqNCaiPsG4')
+    GOOGLE_DRIVE_FOLDER_ID = get_config_value('GOOGLE_DRIVE_FOLDER_ID')
     
     # Email Configuration
-    GMAIL_USERNAME = os.getenv('GMAIL_USERNAME')
-    GMAIL_APP_PASSWORD = os.getenv('GMAIL_APP_PASSWORD')
+    GMAIL_USERNAME = get_config_value('GMAIL_USERNAME')
+    GMAIL_APP_PASSWORD = get_config_value('GMAIL_APP_PASSWORD')
     
     # Project Settings
-    PROJECT_NAME = os.getenv('PROJECT_NAME', 'Student Selection Crew')
-    MAX_SHORTLIST = int(os.getenv('MAX_SHORTLIST', 10))
-    MAX_FINAL_SELECTION = int(os.getenv('MAX_FINAL_SELECTION', 5))
+    PROJECT_NAME = get_config_value('PROJECT_NAME', 'Student Selection Crew')
+    MAX_SHORTLIST = int(get_config_value('MAX_SHORTLIST', '10'))
+    MAX_FINAL_SELECTION = int(get_config_value('MAX_FINAL_SELECTION', '5'))
     
     # File Paths
     DATA_DIR = 'data'
