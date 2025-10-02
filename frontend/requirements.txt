@@ -4,9 +4,15 @@ plotly>=5.15.0
 pandas>=2.0.0
 python-dotenv>=1.0.0
 
-# CrewAI Multi-Agent Framework
+# CrewAI Multi-Agent Framework - Core Dependencies First
+pydantic>=2.0.0,<3.0.0
+langchain>=0.1.0
+langchain-community>=0.0.20
+langchain-core>=0.1.23
+langchain-openai>=0.0.5
+
+# CrewAI Main Package
 crewai>=0.28.0
-crewai-tools>=0.1.0
 
 # Google Services Integration
 google-api-python-client>=2.100.0
@@ -43,6 +49,10 @@ aiohttp>=3.8.0
 
 # Development and Debugging
 typing-extensions>=4.7.0
+
+# Additional CrewAI Dependencies
+instructor>=0.4.0
+litellm>=1.0.0
 
 # Optional: Enhanced AI Features
 # google-generativeai>=0.3.0  # Uncomment if using Gemini
