@@ -1,4 +1,49 @@
+# Core Streamlit Application
 streamlit>=1.28.0
 plotly>=5.15.0
 pandas>=2.0.0
 python-dotenv>=1.0.0
+
+# CrewAI Multi-Agent Framework
+crewai>=0.28.0
+crewai-tools>=0.1.0
+
+# Google Services Integration
+google-api-python-client>=2.100.0
+google-auth>=2.23.0
+google-auth-oauthlib>=1.1.0
+google-auth-httplib2>=0.1.1
+gspread>=5.10.0
+
+# OpenAI Integration
+openai>=1.12.0
+
+# Additional AI Services
+anthropic>=0.18.0
+
+# Email and Communication
+secure-smtplib>=0.1.1
+
+# Data Processing and Analysis
+numpy>=1.24.0
+scipy>=1.11.0
+
+# HTTP Requests and Utilities
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Date and Time Utilities
+python-dateutil>=2.8.0
+
+# JSON and Data Handling
+jsonschema>=4.19.0
+
+# Async Support
+aiohttp>=3.8.0
+
+# Development and Debugging
+typing-extensions>=4.7.0
+
+# Optional: Enhanced AI Features
+# google-generativeai>=0.3.0  # Uncomment if using Gemini
+# assemblyai>=0.17.0          # Uncomment if using AssemblyAI
